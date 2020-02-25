@@ -3,6 +3,12 @@
 #include <string>
 #include <cmath>
 #include <vector>
+#include <iostream>
+#define RED     "\033[31m"      //red color
+#define BLUE    "\033[34m"      //blue color
+#define GREEN   "\033[32m"      //green color
+#define RESET   "\033[0m"       //reset the color to default
+
 using namespace std;
 
 //input: year
@@ -20,4 +26,9 @@ int retWeekday(int year, int month, int day);
 //input: year, month and day 
 //output: print all the dates of the entire month
 //interface: 
-void printMonth(int year, int month);
+void printMonth(int year, int month, int day);
+
+//input: year, month
+//output: day count of the month
+//interface
+int retday_Count(int year, int montn);

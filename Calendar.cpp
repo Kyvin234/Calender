@@ -1,5 +1,6 @@
 #include "Calendar.h"
 
+
 bool checkLeap(int year)
 {
 
@@ -8,6 +9,26 @@ bool checkLeap(int year)
         return true;
     }
     return false;
+}
+
+int retday_Count(int year, int month)
+{
+    if(month == 4 || month == 6 || month == 9 || month == 11)
+    {
+        return 30;
+    }
+    else if(month == 2)
+    {
+        if(checkLeap(year))
+            return 29;
+        else 
+            return 28;
+    }
+    else
+    {
+        return 31;
+    }
+    return -1;
 }
 
 int retWeekday(int year, int month, int day)
@@ -28,7 +49,45 @@ int retWeekday(int year, int month, int day)
     return weekday;
 }
 
-void printMonth(int year, int month)
+void printMonth(int year, int month, int day)
 {
+    int start; //the start day of the week 
+    start = retWeekday(year, month, day);
+    cout << BLUE << "  SUN    MON    TUE    WED    THU    FRI    SAT  " << RESET << endl;
+    //print the blank to reach the start of the calendar date 
+    for(int i = 0; i < start; i++)
+    {
+
+        cout << "|     |";
+    }
+    for(int i = 1; i <= retday_Count(year, month); i++)
+    {
+
+        if(i > 9)
+        {  
+            if(i == day)
+                cout << "|  " << RED << i << RESET << " |";
+            else    
+                cout << "|  " << i << " |";
+
+        }
+        else
+        {
+            if(i == day)
+                cout << "|  " << RED << i << RESET << "  |";
+            else 
+                cout << "|  " << i << "  |";
+        }
+        if(start == 0 && i % 7 == 0)
+        {
+            cout << endl;
+        }
+        else if(start != 0 && i % 7 == 7 - start)
+        {
+            cout << endl;
+        }
+    }
+    cout << endl;
+    
     return;
 }

@@ -11,11 +11,13 @@ using namespace std;
 
 
 
-int y, d, m;
-vector<string> months{"", "January","February","March","April","May","June","July","August","September","October","November","December"};
-vector<string> weekdays{"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",};
+
+
 int main() 
 {
+    int y, d, m;
+    vector<string> months{"", "January","February","March","April","May","June","July","August","September","October","November","December"};
+    vector<string> weekdays{"Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday",};
     cout << "Welcome to the Calendar!!"<< endl;
     cout << "please enter the year: " << endl;
     cin >> y;
@@ -61,6 +63,7 @@ int main()
             return -1;
         }
     }
-    cout << months[m] << " " << d << ", " << y << " " << "is a " << weekdays[retWeekday(y,m,d)] << endl;
+    cout << "             " << GREEN << months[m] << " " << d << ", " << y << " " << "is a " << weekdays[retWeekday(y,m,d)] << RESET << endl;
+    printMonth(y,m,d);
     return 0;
 }
